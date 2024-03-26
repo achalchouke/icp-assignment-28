@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Increament/Decriment</title>
+    <style>
+        body{
+            background-color: #e1e1d0
+        }
+        .product-card{
+            background-color: #fff;
+            width: 300px;
+            height: 580px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rbga(0, 0, 0, 0.1);
+            display:block;
+            margin: 3px auto;
+            padding: 3px;
+        }
+        .bag-img{
+            height: 150px;
+            display:block;
+            margin: 5px auto;
+            background-color: #FF9A8B;
+            border-radius: 20px;
+            padding: 5px 55px;
+        }
+        .card-body{
+            margin-left: 30px;
+        }
+        .product-title{
+            font-size: 26px;
+        }
+        .product-description{
+            font-size: 16px;
+        }
+        .product-price{
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .btn-buy-now{
+            background-color: #FF9A8B;
+            border: none;
+            color: #fff;
+            border-radius: 20px;
+            padding: 10px 25px;
+            font-size: 20px;
+            display: block;
+            margin: 10px auto;
+        }
+        .quantity-btn-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .btn-quantity{
+            height: 35px;
+        }
+        .quantity-text{
+            font-size: 25px;
+            margin: auto 10px;
+        }
+        @media screen and (max-width:600px){
+            .product-card{
+                width: 80%;
+            }
+            .bag-img{
+                height: 80px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+  <div class="product-card">
+    <img src="bag.png" class="bag-img"/>
+  
+  <div class="card-body">
+    <h1 class="product-title">Mini Leather Two-Handle Bag</h1>
+    <p class="product-description">
+       The bag is made with two loop handles, one on either side, that are made from the same material as the rest of the bag.
+       One of these handles is slightly longer than the other. </p>
+    <p class="product-price">
+        ₹ 489/-
+    </p>
+
+    <p id="show-quantity">1*489</p>
+    <p id="show-total">Total : 489</p>
+
+  <div class="quantity-btn-container">
+    <img src="minus.png" class="btn-quantity" onclick="dec()"/>
+    <span class="quantity-text" id="quantity-text" >1</span>
+    <img src="plus.png" class="btn-quantity" onclick="inc()"/>
+  </div>
+
+
+  <button type="button" class="btn-buy-now">Buy Now</button>
+
+  </div>
+  </div>
+
+  <script>
+    function inc(){
+        const quantityText = document.getElementById("quantity-text");
+
+        const showQuantity = document.getElementById("show-quantity");
+
+        const showTotal = document.getElementById("show-total");
+
+        let quantity = parseInt(quantityText.innerText);
+
+        if(quantity<10)
+        {
+            quantityText.innerText = ++quantity
+        }
+        else
+        {
+            alert("you can't add more than 10 items")
+        }
+
+        showQuantity.innerText = `${quantity}*489`;
+        showTotal.innerText = `Total : ${quantity*489}`;
+    }
+    function dec(){
+        const quantityText = document.getElementById("quantity-text");
+
+        const showQuantity = document.getElementById("show-quantity");
+
+        const showTotal = document.getElementById("show-total");
+
+        let quantity = parseInt(quantityText.innerText);
+
+        if(quantity>1)
+        {
+            quantityText.innerText = --quantity
+        }
+        else
+        {
+            alert("you can't add more than 1 items")
+    }
+
+        showQuantity.innerText = `${quantity}*489`;
+        showTotal.innerText = `Total : ${quantity*489}`;
+}
+  </script>
+</body>
+</html>
